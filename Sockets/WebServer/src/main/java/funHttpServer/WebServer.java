@@ -22,6 +22,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.Map;
 import java.util.LinkedHashMap;
 import java.nio.charset.Charset;
@@ -227,10 +231,6 @@ class WebServer {
 				builder.append("\n");
 				builder.append("Invalid Input");
 			}
-
-          // TODO: Include error handling here with a correct error code and
-          // a response that makes sense
-
         } else if (request.contains("github?")) {
           // pulls the query from the request and runs it with GitHub's REST API
           // check out https://docs.github.com/rest/reference/
@@ -246,6 +246,16 @@ class WebServer {
           System.out.println(json);
 
           builder.append("Check the todos mentioned in the Java source file");
+          JSONArray repoArray = new JSONArray(json);
+          JSONObject repository;
+          JSONObject owner;
+          for (int i = 0; i < repoArray.length(); i++) {
+        	  repository = repoArray.getJSONObject(i);
+        	  owner = repository.getJSONObject("owner");
+        	  System.out.print(owner.getString("login") + ", ");
+        	  System.out.print(owner.getString("id") + " -> ");
+        	  System.out.print(repository.getString("name") + "\n");
+          }
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response
           // and list the owner name, owner id and name of the public repo on your webpage, e.g.
