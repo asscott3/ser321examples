@@ -204,12 +204,20 @@ class WebServer {
         	// extract required fields from parameters
           	Integer num1 = null;
 			Integer num2 = null;
-			num1 = Integer.parseInt(query_pairs.get("num1"));
-			num2 = Integer.parseInt(query_pairs.get("num2"));
+			try {
+				num1 = Integer.parseInt(query_pairs.get("num1"));
+				num2 = Integer.parseInt(query_pairs.get("num2"));
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
 
 			// do math
 			Integer result = null;
-			result = num1 * num2;
+			try {
+				result = num1 * num2;
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
 
 			if (!result.equals(null)) {
 				// Generate response
