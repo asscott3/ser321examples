@@ -257,12 +257,6 @@ class WebServer {
         	  builder.append(owner.get("id") + " -> ");
         	  builder.append(repository.get("name") + "\n");
           }
-          // TODO: Parse the JSON returned by your fetch and create an appropriate
-          // response
-          // and list the owner name, owner id and name of the public repo on your webpage, e.g.
-          // amehlhase, 46384989 -> memoranda
-          // amehlhase, 46384989 -> ser316examples
-          // amehlhase, 46384989 -> test316
 
         } else {
           // if the request is not recognized at all
