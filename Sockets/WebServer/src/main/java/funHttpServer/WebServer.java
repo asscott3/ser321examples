@@ -208,7 +208,7 @@ class WebServer {
 				num1 = Integer.parseInt(query_pairs.get("num1"));
 				num2 = Integer.parseInt(query_pairs.get("num2"));
 			} catch (NumberFormatException e1) {
-				builder.append("HTTP/1.1 400 Bad Request OK\n");
+				builder.append("HTTP/1.1 400 Bad Request\n");
 		        builder.append("Content-Type: text/html; charset=utf-8\n");
 		        builder.append("\n");
 		        builder.append("Invalid number format ");
@@ -220,14 +220,14 @@ class WebServer {
 		try {
 			result = num1 * num2;
 		} catch (NullPointerException e) {
-			builder.append("HTTP/1.1 400 Bad Request OK\n");
+			builder.append("HTTP/1.1 400 Bad Request\n");
 	        builder.append("Content-Type: text/html; charset=utf-8\n");
 	        builder.append("\n");
 	        builder.append("Invalid Input ");
 			e.printStackTrace();
 		}
 
-          if (!num1.equals(null) || !num2.equals(null)) {
+          if (!num1.equals(null) && !num2.equals(null)) {
 			// Generate response
 			builder.append("HTTP/1.1 200 OK\n");
 			builder.append("Content-Type: text/html; charset=utf-8\n");
