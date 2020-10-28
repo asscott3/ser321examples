@@ -216,7 +216,7 @@ class WebServer {
 
 			// do math
 			Integer result = null;
-			if (!num1.equals(null) || !num2.equals(null)) {
+			if (!num1.equals(null) && !num2.equals(null)) {
 				result = num1 * num2;
 			}
 			if (!result.equals(null)) {
