@@ -204,8 +204,16 @@ class WebServer {
           // extract required fields from parameters
           Integer num1 = null;
 			Integer num2 = null;
-			num1 = Integer.parseInt(query_pairs.get("num1"));
-			num2 = Integer.parseInt(query_pairs.get("num2"));
+			try {
+				num1 = Integer.parseInt(query_pairs.get("num1"));
+				num2 = Integer.parseInt(query_pairs.get("num2"));
+			} catch (NumberFormatException e1) {
+				builder.append("HTTP/1.1 400 Bad Request OK\n");
+		        builder.append("Content-Type: text/html; charset=utf-8\n");
+		        builder.append("\n");
+		        builder.append("Invalid number format ");
+				e1.printStackTrace();
+			}
 
           // do math
           Integer result = null;
