@@ -208,17 +208,17 @@ class WebServer {
 				num1 = Integer.parseInt(query_pairs.get("num1"));
 				num2 = Integer.parseInt(query_pairs.get("num2"));
 			} catch (NumberFormatException e) {
-				e.printStackTrace();
+				builder.append("HTTP/1.1 400 Bad Request\n");
+				builder.append("Content-Type: text/html; charset=utf-8\n");
+				builder.append("\n");
+				builder.append("Invalid Input");
 			}
 
 			// do math
 			Integer result = null;
-			try {
+			if (!num1.equals(null) || !num2.equals(null)) {
 				result = num1 * num2;
-			} catch (NullPointerException e) {
-				e.printStackTrace();
 			}
-
 			if (!result.equals(null)) {
 				// Generate response
 				builder.append("HTTP/1.1 200 OK\n");
