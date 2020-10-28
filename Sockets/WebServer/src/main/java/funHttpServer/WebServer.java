@@ -252,9 +252,9 @@ class WebServer {
           for (int i = 0; i < repoArray.length(); i++) {
         	  repository = repoArray.getJSONObject(i);
         	  owner = repository.getJSONObject("owner");
-        	  System.out.print(owner.getString("login") + ", ");
-        	  System.out.print(owner.getString("id") + " -> ");
-        	  System.out.print(repository.getString("name") + "\n");
+        	  System.out.print(owner.get("login") + ", ");
+        	  System.out.print(owner.get(arg0)("id") + " -> ");
+        	  System.out.print(repository.get("name") + "\n");
           }
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response
