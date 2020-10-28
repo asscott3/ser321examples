@@ -216,7 +216,7 @@ class WebServer {
 		}
 
           // do math
-          Integer result;
+          Integer result = null;
 		try {
 			result = num1 * num2;
 		} catch (NullPointerException e) {
