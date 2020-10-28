@@ -243,18 +243,19 @@ class WebServer {
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
           query_pairs = splitQuery(request.replace("github?", ""));
           String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
-          System.out.println(json);
 
-          builder.append("Check the todos mentioned in the Java source file");
+          builder.append("HTTP/1.1 200 OK\n");
+          builder.append("Content-Type: text/html; charset=utf-8\n");
+          builder.append("\n");
           JSONArray repoArray = new JSONArray(json);
           JSONObject repository;
           JSONObject owner;
           for (int i = 0; i < repoArray.length(); i++) {
         	  repository = repoArray.getJSONObject(i);
         	  owner = repository.getJSONObject("owner");
-        	  System.out.print(owner.get("login") + ", ");
-        	  System.out.print(owner.get("id") + " -> ");
-        	  System.out.print(repository.get("name") + "\n");
+        	  builder.append(owner.get("login") + ", ");
+        	  builder.append(owner.get("id") + " -> ");
+        	  builder.append(repository.get("name") + "\n");
           }
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response
