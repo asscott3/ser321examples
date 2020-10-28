@@ -216,7 +216,16 @@ class WebServer {
 		}
 
           // do math
-          Integer result = num1 * num2;
+          Integer result;
+		try {
+			result = num1 * num2;
+		} catch (NullPointerException e) {
+			builder.append("HTTP/1.1 400 Bad Request OK\n");
+	        builder.append("Content-Type: text/html; charset=utf-8\n");
+	        builder.append("\n");
+	        builder.append("Invalid input");
+			e.printStackTrace();
+		}
 
           // Generate response
           builder.append("HTTP/1.1 200 OK\n");
