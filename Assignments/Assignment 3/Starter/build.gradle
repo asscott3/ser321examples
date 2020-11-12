@@ -4,6 +4,15 @@ apply plugin: 'application'
 //define main class
 mainClassName = 'Concentration'
 
+repositories {
+  mavenCentral()
+}
+
+dependencies{
+  compile 'org.json:json:20171018' // org.json
+  compile 'com.google.code.gson:gson:2.8.6' // Google JSON
+}
+
 task Gui(type: JavaExec) {
   group 'gui'
   description 'Displays a GUI for a game of concentration'
