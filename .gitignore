@@ -142,4 +142,9 @@ gradle-app.setting
 *.out
 
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle,eclipse
+<<<<<<< HEAD
 /classes/
+=======
+
+*.pyc
+>>>>>>> a73bfa0463077f0a9877f58d4ad56b169458c845
